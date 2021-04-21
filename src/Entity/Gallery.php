@@ -3,15 +3,14 @@
 namespace App\Entity;
 
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\GalleryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Category
+class Gallery
 {
     /**
      * @ORM\Id
@@ -30,29 +29,7 @@ class Category
      * @Assert\NotBlank(message="field_is_required")
      * @ORM\Column(type="string")
      */
-    private $description;
-
-    /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
-     */
     private $photoUrl;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $parent;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="parent", orphanRemoval=true, fetch="EAGER")
-     */
-    private $children;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category")
-     */
-    private $products;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -64,12 +41,6 @@ class Category
      * @ORM\Column(type="string")
      */
     private $created;
-
-    public function __construct()
-    {
-        $this->children = new ArrayCollection();
-        $this->products = new ArrayCollection();
-    }
 
     /**
      * @ORM\PrePersist
@@ -102,16 +73,6 @@ class Category
         $this->title = $title;
     }
 
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function setDescription($description): void
-    {
-        $this->description = $description;
-    }
-
     public function getPhotoUrl()
     {
         return $this->photoUrl;
@@ -120,31 +81,6 @@ class Category
     public function setPhotoUrl($photoUrl): void
     {
         $this->photoUrl = $photoUrl;
-    }
-
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    public function setParent($parent): void
-    {
-        $this->parent = $parent;
-    }
-
-    public function getChildren(): ArrayCollection
-    {
-        return $this->children;
-    }
-
-    public function setChildren(ArrayCollection $children): void
-    {
-        $this->children = $children;
-    }
-
-    public function getProducts()
-    {
-        return $this->products;
     }
 
     public function getUpdated()

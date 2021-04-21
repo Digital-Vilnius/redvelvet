@@ -1,10 +1,9 @@
 <div class="product">
     <div class="image">
-        <img src="{{ asset('images/product.jpg') }}" alt="Product">
+        <img src="{{ asset('images/product.jpg') }}" alt="{{ product.title }}">
     </div>
     <div class="description">
-        <h4>$29</h4>
-        <h3>Strawberry Cupcakes</h3>
-        <a class="pest_btn" href="#">Add to cart</a>
+        <h3>{{ product.title }}</h3>
+        <h3 class="price">{{ product.price | priceFormat }} / {{ product.measurement }}</h3>
     </div>
 </div>

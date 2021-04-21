@@ -44,21 +44,22 @@
         position: relative;
 
         h4 {
+            display: none;
             width: 70px;
             height: 70px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px 0 rgb(40 40 40 / 8%);
             border-radius: 50%;
             color: $color-dark-grey;
-            font-size: 26px;
+            font-size: 18px;
             font-family: $font-playfair-display;
             font-style: italic;
             background: $color-white;
-            display: inline-block;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             top: -35px;
             line-height: 68px;
-            margin-bottom: 0;
             z-index: 2;
         }
 
@@ -68,6 +69,10 @@
             font-family: $font-playfair-display;
             margin-bottom: 22px;
             padding-top: 35px;
+
+            &.price {
+                font-family: $font-open-sans;
+            }
         }
     }
 }
