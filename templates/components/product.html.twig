@@ -1,4 +1,4 @@
-<div class="product">
+<a href="{{ path('product', {id: product.id}) }}" class="product">
     <div class="image">
         <img src="{{ asset('images/product.jpg') }}" alt="{{ product.title }}">
     </div>
@@ -6,4 +6,4 @@
         <h3>{{ product.title }}</h3>
         <h3 class="price">{{ product.price | priceFormat }} / {{ product.measurement }}</h3>
     </div>
-</div>
+</a>
