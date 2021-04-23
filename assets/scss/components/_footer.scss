@@ -1,50 +1,84 @@
 .footer {
-    width: 100%;
-    height: auto;
-    background-color: $color-dark-blue;
-    padding: 20px 0;
+  width: 100%;
+  height: auto;
+  background-color: $color-dark-blue;
+  padding: 20px 0;
 
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .copyrights {
-            color: rgba($color-white, 0.75);
-            font-size: 11px;
+    .copyrights {
+      color: rgba($color-white, $rgba-alpha);
+      font-size: 11px;
+      line-height: 1.75;
 
-            .link {
-                color: $color-white;
+      .link {
+        color: $color-white;
 
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
+        &:hover {
+          text-decoration: underline;
         }
-
-        .information {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            .link {
-                font-size: 11px;
-                margin-left: 25px;
-                color: rgba($color-white, 0.75);
-
-                &:nth-child(2) {
-                    margin-right: 100px;
-                }
-
-                i {
-                    font-size: 14px;
-                    margin-top: 2px;
-                }
-
-                &:hover {
-                    color: $color-white;
-                }
-            }
-        }
+      }
     }
+
+    .information {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .link {
+        font-size: 11px;
+        margin-left: 25px;
+        white-space: nowrap;
+        color: rgba($color-white, $rgba-alpha);
+
+        &:nth-child(2) {
+          margin-right: 100px;
+        }
+
+        i {
+          font-size: 14px;
+          margin-top: 2px;
+        }
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  @include for-tablet {
+    .container {
+      flex-direction: column-reverse;
+      justify-content: center;
+
+      .copyrights {
+        text-align: center;
+      }
+
+      .information {
+        flex-direction: column;
+
+        .social-media {
+          margin-bottom: 25px;
+
+          .link:first-child {
+            margin-right: 15px;
+          }
+        }
+
+        .link {
+          margin-bottom: 15px;
+          margin-left: 0;
+
+          &:nth-child(2) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,23 @@
+@mixin for-phone {
+  @media (max-width: $breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (max-width: $breakpoint-large) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (max-width: $breakpoint-extra-large) {
+    @content;
+  }
+}
+
+@mixin for-large-desktop {
+  @media (min-width: $breakpoint-extra-large) {
+    @content;
+  }
+}

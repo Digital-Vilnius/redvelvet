@@ -1,3 +1,3 @@
-@mixin transition($property: all, $duration: 300ms, $animate: ease, $delay: 0s) {
-    transition: $property $duration $animate $delay;
+@mixin transition($property: all, $duration: $transition-duration, $delay: $transition-delay, $style: $transition-style) {
+    transition: $property $duration $style $delay;
 }

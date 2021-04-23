@@ -6,7 +6,11 @@
 
 @import "variables/colors";
 @import "variables/fonts-families";
+@import "variables/breakpoints";
+@import "variables/transitions";
 
+@import "mixins/media";
+@import "mixins/grid";
 @import "mixins/transitions";
 @import "mixins/positioning";
 
@@ -26,3 +30,5 @@
 @import "components/categories";
 @import "components/category";
 @import "components/slideshow";
+@import "components/overlay";
+@import "components/scrollbar";

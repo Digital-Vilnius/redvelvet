@@ -1,0 +1,21 @@
+@mixin grid($grid-row-gap: 30px, $grid-column-gap: 15px, $large-desktop-columns: 4, $desktop-columns: 4, $tablet-columns: 2, $phone-columns: 1) {
+  display: grid;
+  grid-row-gap: $grid-row-gap;
+  grid-column-gap: $grid-column-gap;
+
+  @include for-large-desktop {
+    grid-template-columns: repeat($large-desktop-columns, 4fr);
+  }
+
+  @include for-desktop {
+    grid-template-columns: repeat($desktop-columns, 2fr);
+  }
+
+  @include for-tablet {
+    grid-template-columns: repeat($tablet-columns, 2fr);
+  }
+
+  @include for-phone {
+    grid-template-columns: repeat($phone-columns, 1fr);
+  }
+}

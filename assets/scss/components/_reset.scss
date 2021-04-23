@@ -1,23 +1,29 @@
 * {
-    box-sizing: border-box;
-    font-family: $font-family-montserrat;
+  box-sizing: border-box;
+  font-family: $font-family-montserrat;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+
+  &.locked {
+    height: 100%;
+    overflow: hidden;
+    padding-right: 4px;
+  }
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 h1, h2, h3, h4, p {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
