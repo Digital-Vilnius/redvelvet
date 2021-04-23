@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="container">
+            <h1 class="title">{% block title %}{% endblock %}</h1>
+            {% if breadcrumbs is defined %}
+                <div class="breadcrumb">
+                    {% for breadcrumb in breadcrumbs %}
+                        {% if breadcrumb.link is defined %}
+                            <div class="breadcrumb-item"><a class="link" href="{{ breadcrumb.link }}">{{ breadcrumb.title }}</a></div>
+                        {% else %}
+                            <div class="breadcrumb-item active"><span class="active">{{ breadcrumb.title }}</span></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <main class="main">
+        {% block main %}{% endblock %}
+    </main>
+{% endblock %}

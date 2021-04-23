@@ -1,7 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends "layouts/page-layout.html.twig" %}
+{% block title %}{{ product.title }}{% endblock %}
+{% set header_active = product.rootCategory.slug %}
 
-{% block body %}
-    <div class="container">
+{% block stylesheets %}
+    {{ encore_entry_link_tags('product') }}
+{% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('product') }}
+{% endblock %}
+
+{% block main %}
+    <div class="product-page">
+        <div class="container content">
+            <div class="image">
+                <img src="{{ asset('products/' ~ product.photoUrl) }}" alt="{{ product.title }}">
+            </div>
+            <div class="details">
+                <h2 class="title">{{ product.title }}</h2>
+                <span class="price">{{ product.price | priceFormat }} / {{ product.measurement }}</span>
+                <p class="description">{{ product.description }}</p>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="container">
+            <h3 class="subtitle">{{ 'titles.related_products' | trans }}</h3>
+            {% include 'components/products.html.twig' with {products: relatedProducts} %}
+        </div>
     </div>
+
 {% endblock %}

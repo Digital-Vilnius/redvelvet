@@ -1,135 +1,50 @@
-.footer_area {
-    background: $color-tuna;
-    overflow: hidden;
-}
+.footer {
+    width: 100%;
+    height: auto;
+    background-color: $color-dark-blue;
+    padding: 20px 0;
 
-.footer_widgets {
-    padding: 80px 0 50px 0;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-    .footer_wd_inner {
-        .col-lg-3 {
-            &:nth-child(2) {
-                .f_link_widget {
-                    padding-left: 35px;
-                }
-            }
-        }
-    }
-}
+        .copyrights {
+            color: rgba($color-white, 0.75);
+            font-size: 11px;
 
-.f_title {
-    margin-bottom: 20px;
-
-    h3 {
-        color: $color-white;
-        font-family: $font-playfair-display;
-        font-weight: bold;
-        font-size: 20px;
-        position: relative;
-        padding-bottom: 10px;
-        margin-bottom: 0;
-
-        &:before {
-            content: "";
-            width: 30px;
-            height: 1px;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            background: $color-mauvelous;
-        }
-    }
-}
-
-.f_about_widget {
-    p {
-        font-size: 14px;
-        line-height: 23px;
-        font-family: $font-open-sans;
-        color: $color-silver-chalice;
-        letter-spacing: .28px;
-        margin-top: 20px;
-        margin-bottom: 0;
-    }
-
-    .nav {
-        margin-top: 35px;
-
-        li {
-            display: inline-block;
-            margin-right: 10px;
-
-            a {
-                display: inline-block;
-                text-align: center;
-                height: 36px;
-                width: 36px;
-                border-radius: 50%;
+            .link {
                 color: $color-white;
-                border: 1px solid $color-jumbo;
-                font-size: 16.92px;
-                line-height: 35px;
-                @include transition;
-            }
 
-            &:hover {
-                a {
-                    color: $color-mauvelous;
-                    border-color: $color-mauvelous;
-                }
-            }
-
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-    }
-}
-
-.f_link_widget {
-    .list_style {
-        li {
-            margin-bottom: 10px;
-
-            a {
-                font-size: 14px;
-                color: $color-silver-chalice;
-                letter-spacing: .28px;
-                font-family: $font-open-sans;
-                @include transition;
-            }
-
-            &:hover {
-                a {
-                    color: $color-mauvelous;
+                &:hover {
+                    text-decoration: underline;
                 }
             }
         }
-    }
-}
 
-.f_contact_widget {
-    h4 {
-        font-size: 18px;
-        color: $color-silver-chalice;
-        font-family: $font-open-sans;
-        font-weight: 600;
-        margin-bottom: 15px;
-    }
+        .information {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    p {
-        font-size: 14px;
-        line-height: 26px;
-        color: $color-silver-chalice;
-        font-family: $font-open-sans;
-        margin-bottom: 0;
-    }
+            .link {
+                font-size: 11px;
+                margin-left: 25px;
+                color: rgba($color-white, 0.75);
 
-    h5 {
-        font-size: 14px;
-        line-height: 26px;
-        color: $color-silver-chalice;
-        font-family: $font-open-sans;
-        margin-bottom: 0;
+                &:nth-child(2) {
+                    margin-right: 100px;
+                }
+
+                i {
+                    font-size: 14px;
+                    margin-top: 2px;
+                }
+
+                &:hover {
+                    color: $color-white;
+                }
+            }
+        }
     }
 }

@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block title %}{{ 'titles.home' | trans }}{% endblock %}
+{% set header_active = 'home' %}
 
 {% block body %}
     <div class="container">
-        {% include 'components/products.html.twig' %}
+
     </div>
 {% endblock %}

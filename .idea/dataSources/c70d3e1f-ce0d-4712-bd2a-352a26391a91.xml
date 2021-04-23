@@ -1087,7 +1087,7 @@
     <table id="345" parent="13" name="doctrine_migration_versions">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="346" parent="13" name="gallery">
+    <table id="346" parent="13" name="photo">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="347" parent="13" name="product">
@@ -1127,123 +1127,151 @@
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="355" parent="344" name="IDX_64C19C1727ACA70">
-      <ColNames>parent_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="356" parent="344" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="357" parent="344" name="FK_64C19C1727ACA70">
-      <ColNames>parent_id</ColNames>
-      <RefTableName>category</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="358" parent="345" name="version">
-      <Position>1</Position>
-      <DataType>varchar(191)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="359" parent="345" name="executed_at">
-      <Position>2</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="360" parent="345" name="execution_time">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <key id="361" parent="345" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>version</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="362" parent="346" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="363" parent="346" name="title">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="364" parent="346" name="photo_url">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="365" parent="346" name="updated">
-      <Position>4</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="366" parent="346" name="created">
-      <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="367" parent="346" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="368" parent="347" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="369" parent="347" name="category_id">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="370" parent="347" name="title">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="371" parent="347" name="description">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="372" parent="347" name="photo_url">
-      <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="373" parent="347" name="price">
-      <Position>6</Position>
-      <DataType>decimal(10,2 digit)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="374" parent="347" name="updated">
-      <Position>7</Position>
-      <DataType>datetime|0s</DataType>
-    </column>
-    <column id="375" parent="347" name="created">
+    <column id="355" parent="344" name="slug">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="376" parent="347" name="measurement">
-      <Position>9</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="377" parent="347" name="IDX_D34A04AD12469DE2">
-      <ColNames>category_id</ColNames>
+    <index id="356" parent="344" name="UNIQ_64C19C1989D9B62">
+      <ColNames>slug</ColNames>
+      <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="378" parent="347" name="PRIMARY">
+    <index id="357" parent="344" name="IDX_64C19C1727ACA70">
+      <ColNames>parent_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="358" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="379" parent="347" name="FK_D34A04AD12469DE2">
+    <key id="359" parent="344" name="UNIQ_64C19C1989D9B62">
+      <ColNames>slug</ColNames>
+      <UnderlyingIndexName>UNIQ_64C19C1989D9B62</UnderlyingIndexName>
+    </key>
+    <foreign-key id="360" parent="344" name="FK_64C19C1727ACA70">
+      <ColNames>parent_id</ColNames>
+      <RefTableName>category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="361" parent="345" name="version">
+      <Position>1</Position>
+      <DataType>varchar(191)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="362" parent="345" name="executed_at">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="363" parent="345" name="execution_time">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <key id="364" parent="345" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>version</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="365" parent="346" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="366" parent="346" name="title">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="367" parent="346" name="photo_url">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="368" parent="346" name="updated">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="369" parent="346" name="created">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="370" parent="346" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="371" parent="347" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="372" parent="347" name="category_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="373" parent="347" name="title">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="374" parent="347" name="description">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="375" parent="347" name="photo_url">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="376" parent="347" name="price">
+      <Position>6</Position>
+      <DataType>decimal(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="377" parent="347" name="updated">
+      <Position>7</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="378" parent="347" name="created">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="379" parent="347" name="measurement">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="380" parent="347" name="slug">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="381" parent="347" name="UNIQ_D34A04AD989D9B62">
+      <ColNames>slug</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="382" parent="347" name="IDX_D34A04AD12469DE2">
+      <ColNames>category_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="383" parent="347" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="384" parent="347" name="UNIQ_D34A04AD989D9B62">
+      <ColNames>slug</ColNames>
+      <UnderlyingIndexName>UNIQ_D34A04AD989D9B62</UnderlyingIndexName>
+    </key>
+    <foreign-key id="385" parent="347" name="FK_D34A04AD12469DE2">
       <ColNames>category_id</ColNames>
       <RefTableName>category</RefTableName>
       <RefColNames>id</RefColNames>

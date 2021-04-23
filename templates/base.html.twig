@@ -2,16 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" href="{{ asset('images/logo.jpg') }}" type="image/jpg">
+        <title>{% block title %}{% endblock %} | Redvelvet</title>
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
+
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
-{#        {% include 'components/header.html.twig' %}#}
+        {% include 'components/header.html.twig' %}
+        {% include 'components/mobile-header.html.twig' %}
         {% block body %}{% endblock %}
         {% include 'components/footer.html.twig' %}
     </body>

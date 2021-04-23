@@ -1,2 +1,4 @@
+import 'lightgallery.js/dist/js/lightgallery.min';
 import './scss/style.scss';
-import './vendors/bootstrap.min.css';
+
+lightGallery(document.getElementById('lightgallery'));

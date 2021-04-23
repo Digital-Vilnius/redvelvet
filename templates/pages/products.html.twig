@@ -1,8 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/page-layout.html.twig' %}
+{% block title %}{{ category ? category : 'titles.products' | trans  }}{% endblock %}
+{% set header_active = category ? category.getRootCategory.slug : 'products' %}
 
-{% block body %}
+{% block main %}
     <div class="container">
-        {% include 'components/products.html.twig' %}
+        {% include 'components/categories.html.twig' with {categories: category ? category.children : getRootCategories()} %}
+        {% include 'components/products.html.twig' with {products: products} %}
         {% include 'components/paging.html.twig' %}
     </div>
 {% endblock %}

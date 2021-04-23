@@ -1,9 +1,10 @@
-<a href="{{ path('product', {id: product.id}) }}" class="product">
+<div class="product">
+    <a href="{{ path('product', {slug: product.slug}) }}" class="link"></a>
     <div class="image">
-        <img src="{{ asset('images/product.jpg') }}" alt="{{ product.title }}">
+        <img src="{{ asset('products/' ~ product.photoUrl) }}" alt="{{ product.title }}">
     </div>
-    <div class="description">
-        <h3>{{ product.title }}</h3>
-        <h3 class="price">{{ product.price | priceFormat }} / {{ product.measurement }}</h3>
+    <div class="details">
+        <h3 class="title">{{ product.title }}</h3>
+        <span class="price">{{ product.price | priceFormat }} / {{ product.measurement }}</span>
     </div>
-</a>
+</div>

@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -19,6 +21,12 @@ class Category
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
 
     /**
      * @Assert\NotBlank(message="field_is_required")
@@ -71,6 +79,11 @@ class Category
         $this->products = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\PrePersist
      */
@@ -90,6 +103,16 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
     }
 
     public function getTitle()
@@ -132,17 +155,22 @@ class Category
         $this->parent = $parent;
     }
 
-    public function getChildren(): ArrayCollection
+    public function getChildren(): Collection
     {
         return $this->children;
     }
 
-    public function setChildren(ArrayCollection $children): void
+    public function setChildren(Collection $children): void
     {
         $this->children = $children;
     }
 
-    public function getProducts()
+    public function setProducts(Collection $products): void
+    {
+        $this->products = $products;
+    }
+
+    public function getProducts(): Collection
     {
         return $this->products;
     }
@@ -155,5 +183,33 @@ class Category
     public function getCreated()
     {
         return $this->created;
+    }
+
+    public function getDescendants(): array
+    {
+        $descendants = [];
+        foreach ($this->children as $child) {
+            $descendants[] = $child;
+            $descendants = array_merge($descendants, $child->getDescendants());
+        }
+        return $descendants;
+    }
+
+    public function getAscendants(): array
+    {
+        $ascendants = [];
+        $parent = $this->parent;
+        while($parent != null) {
+            $ascendants[] = $parent;
+            $parent = $parent->getParent();
+        }
+        return $ascendants;
+    }
+
+    public function getRootCategory(): Category
+    {
+        $rootCategory = $this;
+        while($rootCategory->getParent()) $rootCategory = $rootCategory->getParent();
+        return $rootCategory;
     }
 }

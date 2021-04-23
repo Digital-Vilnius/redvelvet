@@ -1,19 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700|Montserrat:300,400,500,600,700|Open+Sans:300,400,400i,600,600i,700|Playfair+Display:400,400i,700,900|Lato');
+@import "~lightgallery.js/dist/css/lightgallery.min.css";
+
+@import "fonts/font-awesome";
+@import "fonts/material-icons";
+@import "fonts/montserrat";
 
 @import "variables/colors";
-@import "variables/fonts";
+@import "variables/fonts-families";
 
 @import "mixins/transitions";
+@import "mixins/positioning";
 
+@import "components/reset";
 @import "components/grid";
 @import "components/footer";
+@import "components/header";
+@import "components/mobile-header";
 @import "components/product";
-//@import "components/header";
-
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-
+@import "components/page-header";
+@import "components/paging";
+@import "components/photo";
+@import "components/products";
+@import "components/photos";
+@import "components/typography";
+@import "components/categories";

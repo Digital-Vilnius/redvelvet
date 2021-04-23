@@ -1,55 +1,13 @@
-<footer class="footer_area">
-    <div class="footer_widgets">
-        <div class="container">
-            <div class="row footer_wd_inner">
-                <div class="col-lg-3 col-6">
-                    <aside class="f_widget f_about_widget">
-                        <img src=src="{{ asset('images/logo.jpg') }}" alt="Redvelvet">
-                        <p>{{ 'footer.about_us' | trans }}</p>
-                        <ul class="nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>
-                    </aside>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <aside class="f_widget f_link_widget">
-                        <div class="f_title">
-                            <h3>{{ 'footer.links' | trans }}</h3>
-                        </div>
-                        <ul>
-                            <li><a href="#">Your Account</a></li>
-                            <li><a href="#">View Order</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditionis</a></li>
-                        </ul>
-                    </aside>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <aside class="f_widget f_link_widget">
-                        <div class="f_title">
-                            <h3>{{ 'footer.work_time' | trans }}</h3>
-                        </div>
-                        <ul>
-                            <li>Mon. :  Fri.: 8 am - 8 pm</li>
-                            <li>Sat. : 9am - 4pm</li>
-                            <li>Sun. : Closed</li>
-                        </ul>
-                    </aside>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <aside class="f_widget f_contact_widget">
-                        <div class="f_title">
-                            <h3>{{ 'footer.contact_info' | trans }}</h3>
-                        </div>
-                        <h4>+370 611 21862</h4>
-                        <p>Laisvės a. 1-2, Panevėžys</p>
-                        <h5>info@redvelvet.lt</h5>
-                    </aside>
-                </div>
-            </div>
+<footer class="footer elevated">
+    <div class="container">
+        <span class="copyrights">
+            &copy; {{ "now" | date('Y') }} {{ 'footer.created_by' | trans }} <a class="link" target="_blank" href="#">Vytautas Saulis</a>. {{ 'footer.all_rights_reserved' | trans }}.
+        </span>
+        <div class="information">
+            <a class="link" target="_blank" href="mailto:info@redvelvet.lt">info@redvelvet.lt</a>
+            <a class="link" target="_blank" href="tel:+37061121862">+370 611 21862</a>
+            <a class="link" target="_blank" href="https://www.facebook.com/redvelvetdesertine"><i class="fa fa-facebook"></i></a>
+            <a class="link" target="_blank" href="https://www.instagram.com/redvelvetdesertinekavine/"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
 </footer>

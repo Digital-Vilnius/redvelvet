@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -18,6 +19,12 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
 
     /**
      * @Assert\NotBlank(message="field_is_required")
@@ -68,6 +75,11 @@ class Product
      */
     private $created;
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\PrePersist
      */
@@ -87,6 +99,16 @@ class Product
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
     }
 
     public function getTitle()
@@ -147,6 +169,13 @@ class Product
     public function setMeasurement($measurement): void
     {
         $this->measurement = $measurement;
+    }
+
+    public function getRootCategory()
+    {
+        $rootCategory = $this->category;
+        while($rootCategory->getParent()) $rootCategory = $rootCategory->getParent();
+        return $rootCategory;
     }
 
     public function getUpdated()

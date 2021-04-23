@@ -1,4 +1,9 @@
 {
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "lightgallery.js": "^1.4.0",
+        "material-icons": "^0.3.1"
+    },
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
         "@symfony/webpack-encore": "^1.0.0",
@@ -7,7 +12,6 @@
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.32.10",
         "sass-loader": "^11.0.0",
-        "stimulus": "^2.0.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
