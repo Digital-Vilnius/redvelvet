@@ -2,7 +2,8 @@
     "dependencies": {
         "font-awesome": "^4.7.0",
         "lightgallery.js": "^1.4.0",
-        "material-icons": "^0.3.1"
+        "material-icons": "^0.3.1",
+        "swiper": "^6.5.7"
     },
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",

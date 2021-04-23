@@ -4,7 +4,7 @@
 
 {% block main %}
     <div class="container">
-        {% include 'components/categories.html.twig' with {categories: category ? category.children : getRootCategories()} %}
+        {% include 'components/categories-links.html.twig' with {categories: category ? category.children : getRootCategories()} %}
         {% include 'components/products.html.twig' with {products: products} %}
         {% include 'components/paging.html.twig' %}
     </div>

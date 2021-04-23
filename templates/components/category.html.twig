@@ -1,0 +1,9 @@
+<div class="category">
+    <a href="{{ path('category products', {slug: category.slug}) }}" class="link"></a>
+    <div class="image">
+        <img src="{{ asset('products/' ~ category.photoUrl) }}" alt="{{ category.title }}">
+    </div>
+    <div class="details">
+        <h3 class="title">{{ category.title }}</h3>
+    </div>
+</div>

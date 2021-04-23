@@ -1,23 +1,9 @@
 .categories {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 30px;
+  grid-column-gap: 15px;
+  width: 100%;
   padding-top: 25px;
-
-  .link {
-    display: block;
-    height: 36px;
-    font-size: 12px;
-    line-height: 36px;
-    border-radius: 18px;
-    padding: 0 20px;
-    background-color: rgba($color-light-grey, 0.75);
-    color: $color-grey;
-    margin-right: 10px;
-    @include transition;
-
-    &:hover {
-      background-color: $color-light-grey;
-    }
-  }
+  padding-bottom: 50px;
 }

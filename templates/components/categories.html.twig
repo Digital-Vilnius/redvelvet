@@ -1,7 +1,5 @@
-{% if categories is defined and categories | length > 0 %}
-    <div class="categories">
-        {% for category in categories %}
-            <a class="link" href="{{ path('category products', {slug: category.slug}) }}">{{ category }}</a>
-        {% endfor %}
-    </div>
-{% endif %}
+<div class="categories">
+    {% for category in categories %}
+        {% include 'components/category.html.twig' with {category: category} %}
+    {% endfor %}
+</div>

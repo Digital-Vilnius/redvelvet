@@ -1,0 +1,23 @@
+.categories-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 25px;
+
+  .link {
+    display: block;
+    height: 36px;
+    font-size: 12px;
+    line-height: 36px;
+    border-radius: 18px;
+    padding: 0 20px;
+    background-color: rgba($color-light-grey, 0.75);
+    color: $color-grey;
+    margin-right: 10px;
+    @include transition;
+
+    &:hover {
+      background-color: $color-light-grey;
+    }
+  }
+}

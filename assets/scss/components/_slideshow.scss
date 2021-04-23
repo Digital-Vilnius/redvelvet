@@ -1,0 +1,16 @@
+.swiper-container.slideshow {
+  width: 100%;
+  margin-bottom: 50px;
+  height: 800px;
+  margin-top: 60px;
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $color-white;
+  }
+}

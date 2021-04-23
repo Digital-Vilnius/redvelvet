@@ -1,0 +1,7 @@
+{% if categories is defined and categories | length > 0 %}
+    <div class="categories-links">
+        {% for category in categories %}
+            <a class="link" href="{{ path('category products', {slug: category.slug}) }}">{{ category }}</a>
+        {% endfor %}
+    </div>
+{% endif %}
