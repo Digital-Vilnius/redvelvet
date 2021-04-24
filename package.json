@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "font-awesome": "^4.7.0",
         "lightgallery.js": "^1.4.0",
         "swiper": "^6.5.7"
     },

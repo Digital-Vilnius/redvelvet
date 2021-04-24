@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>{% block title %}{% endblock %} | Redvelvet</title>
+        <link rel="icon" href="{{ asset('images/logo.jpg') }}" type="image/jpg">
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link rel="icon" href="{{ asset('images/logo.jpg') }}" type="image/jpg">
-        <title>{% block title %}{% endblock %} | Redvelvet</title>
 
-        <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
         {{ encore_entry_link_tags('app') }}
         {{ encore_entry_script_tags('app') }}
 
