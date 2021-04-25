@@ -5,12 +5,14 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\GalleryPhotoRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
-class Photo
+class GalleryPhoto
 {
     /**
      * @ORM\Id
@@ -26,10 +28,19 @@ class Photo
     private $title;
 
     /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
-    private $photoUrl;
+    private $fileName;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $fileSize;
+
+    /**
+     * @Vich\UploadableField(mapping="gallery_photos", fileNameProperty="fileName", size="fileSize")
+     */
+    private $file;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -73,16 +84,6 @@ class Photo
         $this->title = $title;
     }
 
-    public function getPhotoUrl()
-    {
-        return $this->photoUrl;
-    }
-
-    public function setPhotoUrl($photoUrl): void
-    {
-        $this->photoUrl = $photoUrl;
-    }
-
     public function getUpdated()
     {
         return $this->updated;
@@ -91,5 +92,35 @@ class Photo
     public function getCreated()
     {
         return $this->created;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file): void
+    {
+        $this->file = $file;
+    }
+
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    public function setFileName($fileName): void
+    {
+        $this->fileName = $fileName;
+    }
+
+    public function getFileSize()
+    {
+        return $this->fileSize;
+    }
+
+    public function setFileSize($fileSize): void
+    {
+        $this->fileSize = $fileSize;
     }
 }

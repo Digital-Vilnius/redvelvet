@@ -2,19 +2,30 @@
 {% block title %}{{ product.title }}{% endblock %}
 {% set header_active = product.rootCategory.slug %}
 
-{% block stylesheets %}
-    {{ encore_entry_link_tags('product') }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('product') }}
-{% endblock %}
-
 {% block main %}
     <div class="product-page">
         <div class="container content">
-            <div class="image">
-                <img src="{{ asset('products/' ~ product.photoUrl) }}" alt="{{ product.title }}">
+            <div class="images slideshow-thumbs">
+                <div class="swiper-container gallery-top">
+                    <div class="swiper-wrapper">
+                        {% for photo in product.photos %}
+                            <div class="swiper-slide">
+                                <img alt="{{ product.title }}" src="{{ vich_uploader_asset(photo, 'file') }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                </div>
+                <div class="swiper-container gallery-thumbs">
+                    <div class="swiper-wrapper">
+                        {% for photo in product.photos %}
+                            <div class="swiper-slide">
+                                <img alt="{{ product.title }}" src="{{ vich_uploader_asset(photo, 'file') }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <div class="details">
                 <h2 class="title">{{ product.title }}</h2>
@@ -25,7 +36,11 @@
         <div class="divider"></div>
         <div class="container">
             <h3 class="subtitle">{{ 'titles.related_products' | trans }}</h3>
-            {% include 'components/products.html.twig' with {products: relatedProducts} %}
+            <div class="products">
+                {% for product in relatedProducts %}
+                    {% include 'components/product.html.twig' with {product: product} %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 

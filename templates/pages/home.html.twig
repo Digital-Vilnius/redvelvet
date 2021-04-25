@@ -4,14 +4,35 @@
 
 {% block body %}
     <div class="home-page">
-        {% include 'components/slideshow.html.twig' %}
+        <div class="slideshow swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img alt="redvelvet" src="{{ asset('images/slide1.jpg') }}" />
+                </div>
+                <div class="swiper-slide">
+                    <img alt="redvelvet" src="{{ asset('images/slide2.jpg') }}" />
+                </div>
+                <div class="swiper-slide">
+                    <img alt="redvelvet" src="{{ asset('images/slide3.jpg') }}" />
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
         <div class="container">
             <h3 class="subtitle">{{ 'titles.categories' | trans }}</h3>
-            {% include 'components/categories.html.twig' with {categories: rootCategories} %}
+            <div class="categories">
+                {% for category in rootCategories %}
+                    {% include 'components/category.html.twig' with {category: category} %}
+                {% endfor %}
+            </div>
         </div>
         <div class="container">
             <h3 class="subtitle">{{ 'titles.newest_products' | trans }}</h3>
-            {% include 'components/products.html.twig' with {products: newestProducts} %}
+            <div class="products">
+                {% for product in newestProducts %}
+                    {% include 'components/product.html.twig' with {product: product} %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

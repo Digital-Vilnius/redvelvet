@@ -1,0 +1,27 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        products_photos:
+            uri_prefix:         '%products_photos_path%'
+            upload_destination: '%kernel.project_dir%/public%products_photos_path%'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        gallery_photos:
+            uri_prefix: '%gallery_photos_path%'
+            upload_destination: '%kernel.project_dir%/public%gallery_photos_path%'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true
+
+        categories_photos:
+            uri_prefix: '%categories_photos_path%'
+            upload_destination: '%kernel.project_dir%/public%categories_photos_path%'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

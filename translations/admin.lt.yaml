@@ -1,0 +1,6 @@
+labels:
+    username: Naudotojo vardas
+    password: Slaptažodis
+
+buttons:
+    login: Prisijungti

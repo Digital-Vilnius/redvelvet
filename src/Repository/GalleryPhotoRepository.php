@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\Photo;
+use App\Entity\GalleryPhoto;
 use App\Model\Paging;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
-class PhotoRepository extends ServiceEntityRepository
+class GalleryPhotoRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Photo::class);
+        parent::__construct($registry, GalleryPhoto::class);
     }
 
     public function listPhotos(Paging $paging = null)

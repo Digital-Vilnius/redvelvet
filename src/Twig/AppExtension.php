@@ -3,6 +3,7 @@
 namespace App\Twig;
 
 use App\Repository\CategoryRepository;
+use App\Utils\PriceUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Intl\Currencies;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -40,7 +41,7 @@ class AppExtension extends AbstractExtension
 
     public function priceFormat($price): string
     {
-        return sprintf('%s %s', number_format($price, 2), Currencies::getSymbol($this->currency));
+        return PriceUtils::formatPrice($price, $this->currency);
     }
 
     public function getPagingRoute(int $page, Request $request): string

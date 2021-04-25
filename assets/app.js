@@ -1,6 +1,6 @@
 import 'lightgallery.js/dist/js/lightgallery.min';
 
-import Swiper, {Autoplay, Pagination} from 'swiper';
+import Swiper, {Autoplay, Navigation, Pagination, Thumbs} from 'swiper';
 import 'swiper/swiper-bundle.css';
 
 import './scss/style.scss';
@@ -10,13 +10,37 @@ lightGallery(document.getElementById('lightgallery'));
 
 setupHeader();
 
-Swiper.use([Autoplay, Pagination]);
-const swiper = new Swiper('.swiper-container', {
+Swiper.use([Autoplay, Pagination, Thumbs, Navigation]);
+
+const slideshow = new Swiper('.slideshow', {
     pagination: {
         el: '.swiper-pagination',
     },
     autoplay: {
         delay: 2500,
         disableOnInteraction: false,
+    },
+});
+
+const galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 5,
+    slidesPerView: 3,
+    loop: true,
+    freeMode: true,
+    loopedSlides: 3,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+});
+
+const galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 5,
+    loop: true,
+    loopedSlides: 3,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+        swiper: galleryThumbs,
     },
 });

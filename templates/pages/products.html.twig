@@ -5,7 +5,11 @@
 {% block main %}
     <div class="container">
         {% include 'components/categories-links.html.twig' with {categories: category ? category.children : getRootCategories()} %}
-        {% include 'components/products.html.twig' with {products: products} %}
+        <div class="products">
+            {% for product in products %}
+                {% include 'components/product.html.twig' with {product: product} %}
+            {% endfor %}
+        </div>
         {% include 'components/paging.html.twig' %}
     </div>
 {% endblock %}

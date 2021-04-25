@@ -45,10 +45,9 @@ class Product
     private $description;
 
     /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
+     * @ORM\OneToMany(targetEntity="App\Entity\ProductPhoto", mappedBy="product", orphanRemoval=true, cascade={"persist"})
      */
-    private $photoUrl;
+    private $photos;
 
     /**
      * @Assert\NotBlank(message="field_is_required")
@@ -131,16 +130,6 @@ class Product
         $this->description = $description;
     }
 
-    public function getPhotoUrl()
-    {
-        return $this->photoUrl;
-    }
-
-    public function setPhotoUrl($photoUrl): void
-    {
-        $this->photoUrl = $photoUrl;
-    }
-
     public function getPrice()
     {
         return $this->price;
@@ -186,5 +175,26 @@ class Product
     public function getCreated()
     {
         return $this->created;
+    }
+
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+
+    public function setPhotos($photos): void
+    {
+        $this->photos = $photos;
+    }
+
+    public function addPhoto(ProductPhoto $productPhoto)
+    {
+        $productPhoto->setProduct($this);
+        $this->photos->add($productPhoto);
+    }
+
+    public function removePhoto(ProductPhoto $productPhoto)
+    {
+        $this->photos->removeElement($productPhoto);
     }
 }

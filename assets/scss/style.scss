@@ -19,9 +19,9 @@
 @import "components/product";
 @import "components/page-header";
 @import "components/paging";
-@import "components/photo";
+@import "components/gallery-photo";
 @import "components/products";
-@import "components/photos";
+@import "components/gallery-photos";
 @import "components/typography";
 @import "components/categories-links";
 @import "components/categories";
@@ -29,3 +29,6 @@
 @import "components/slideshow";
 @import "components/overlay";
 @import "components/scrollbar";
+@import "components/slideshow-thumbs";
+
+@import "pages/product";

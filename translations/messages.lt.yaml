@@ -8,10 +8,31 @@ titles:
   related_products: Susiję produktai
   newest_products: Naujausi produktai
   categories: Kategorijos
+  login: Prisijungimas
+  admin: Administratoriaus panelė
+
+buttons:
+  create_product: produktą
+  create_category: kategoriją
+  create_gallery_photo: nuotrauką
+
+labels:
+  id: Id
+  title: Pavadinimas
+  price: Kaina
+  created: Sukurtas
+  updated: Atnaujintas
+  category: Kategorija
+  photo: Nuotrauka
+  measurement: Kaina per
+  products: Produktai
+  parent: Tėvinė kategorija
 
 menu:
   home: Pagrindinis puslapis
   gallery: Galerija
+  products: Produktai
+  categories: Kategorijos
 
 footer:
   created_by: Sukurta

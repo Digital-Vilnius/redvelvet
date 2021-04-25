@@ -4,7 +4,11 @@
 
 {% block main %}
     <div class="container">
-        {% include 'components/photos.html.twig' %}
+        <div id="lightgallery" class="gallery-photos">
+            {% for galleryPhoto in galleryPhotos %}
+                {% include 'components/gallery-photo.html.twig' with {galleryPhoto: galleryPhoto} %}
+            {% endfor %}
+        </div>
         {% include 'components/paging.html.twig' %}
     </div>
 {% endblock %}

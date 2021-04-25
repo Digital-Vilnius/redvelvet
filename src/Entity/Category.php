@@ -8,10 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class Category
 {
@@ -41,10 +43,19 @@ class Category
     private $description;
 
     /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
-    private $photoUrl;
+    private $fileName;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $fileSize;
+
+    /**
+     * @Vich\UploadableField(mapping="categories_photos", fileNameProperty="fileName", size="fileSize")
+     */
+    private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="children")
@@ -135,16 +146,6 @@ class Category
         $this->description = $description;
     }
 
-    public function getPhotoUrl()
-    {
-        return $this->photoUrl;
-    }
-
-    public function setPhotoUrl($photoUrl): void
-    {
-        $this->photoUrl = $photoUrl;
-    }
-
     public function getParent()
     {
         return $this->parent;
@@ -211,5 +212,35 @@ class Category
         $rootCategory = $this;
         while($rootCategory->getParent()) $rootCategory = $rootCategory->getParent();
         return $rootCategory;
+    }
+
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    public function setFileName($fileName): void
+    {
+        $this->fileName = $fileName;
+    }
+
+    public function getFileSize()
+    {
+        return $this->fileSize;
+    }
+
+    public function setFileSize($fileSize): void
+    {
+        $this->fileSize = $fileSize;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file): void
+    {
+        $this->file = $file;
     }
 }

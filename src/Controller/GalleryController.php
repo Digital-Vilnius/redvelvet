@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\PhotoRepository;
+use App\Repository\GalleryPhotoRepository;
 use App\Utils\PagingHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +15,7 @@ class GalleryController extends AbstractController
     private $translator;
     private $pagingHelper;
 
-    public function __construct(TranslatorInterface $translator, PhotoRepository $galleryRepository, PagingHelper $pagingHelper)
+    public function __construct(TranslatorInterface $translator, GalleryPhotoRepository $galleryRepository, PagingHelper $pagingHelper)
     {
         $this->galleryRepository = $galleryRepository;
         $this->translator = $translator;
@@ -31,13 +31,13 @@ class GalleryController extends AbstractController
     {
         $paging = $this->pagingHelper->setupPaging($page);
 
-        $photos = $this->galleryRepository->listPhotos($paging);
-        $photosCount = $this->galleryRepository->countPhotos();
+        $galleryPhotos = $this->galleryRepository->listPhotos($paging);
+        $galleryPhotosCount = $this->galleryRepository->countPhotos();
 
         return $this->render('pages/gallery.html.twig', [
-            'photos' => $photos,
+            'galleryPhotos' => $galleryPhotos,
             'page' => $page,
-            'pagesCount' => ceil($photosCount / $paging->getLimit()),
+            'pagesCount' => ceil($galleryPhotosCount / $paging->getLimit()),
             'breadcrumbs' => [
                 ['link' => $this->generateUrl('home'), 'title' => $this->translator->trans('titles.home')],
                 ['title' => $this->translator->trans('titles.gallery')]

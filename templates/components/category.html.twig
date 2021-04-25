@@ -1,7 +1,7 @@
 <div class="category">
     <a href="{{ path('category products', {slug: category.slug}) }}" class="link"></a>
     <div class="image">
-        <img src="{{ asset('products/' ~ category.photoUrl) }}" alt="{{ category.title }}">
+        <img src="{{ vich_uploader_asset(category, 'file') }}" alt="{{ category.title }}">
     </div>
     <div class="details">
         <h3 class="title">{{ category.title }}</h3>

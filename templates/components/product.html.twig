@@ -1,7 +1,7 @@
 <div class="product">
     <a href="{{ path('product', {slug: product.slug}) }}" class="link"></a>
     <div class="image">
-        <img src="{{ asset('products/' ~ product.photoUrl) }}" alt="{{ product.title }}">
+        <img src="{{ vich_uploader_asset(product.photos[0], 'file') }}" alt="{{ product.title }}">
     </div>
     <div class="details">
         <h3 class="title">{{ product.title }}</h3>
