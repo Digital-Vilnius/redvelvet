@@ -25,6 +25,7 @@ class CategoryRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('category')
             ->leftJoin('category.parent', 'parent')
             ->andWhere('parent is null')
+            ->orderBy('category.created', 'desc')
             ->getQuery()
             ->getResult();
     }
@@ -35,6 +36,7 @@ class CategoryRepository extends ServiceEntityRepository
             ->leftJoin('category.parent', 'parent');
 
         if ($filter) $this->applyFilter($qb, $filter);
+        $qb->orderBy('category.created', 'desc');
 
         return $qb->getQuery()->getResult();
     }

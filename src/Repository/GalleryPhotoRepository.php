@@ -19,6 +19,7 @@ class GalleryPhotoRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('photo');
         if ($paging) $this->applyPaging($qb, $paging);
+        $qb->orderBy('photo.created', 'desc');
         return $qb->getQuery()->getResult();
     }
 

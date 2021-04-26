@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -53,6 +54,7 @@ class Category
     private $fileSize;
 
     /**
+     * @Assert\NotBlank(message="field_is_required", groups={"add"})
      * @Vich\UploadableField(mapping="categories_photos", fileNameProperty="fileName", size="fileSize")
      */
     private $file;
@@ -79,8 +81,7 @@ class Category
     private $updated;
 
     /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="datetime")
      */
     private $created;
 
@@ -239,8 +240,12 @@ class Category
         return $this->file;
     }
 
-    public function setFile($file): void
+    public function setFile(File $file = null): void
     {
         $this->file = $file;
+
+        if ($file) {
+            $this->updated = new DateTime('now');
+        }
     }
 }

@@ -19,11 +19,13 @@ buttons:
 labels:
   id: Id
   title: Pavadinimas
+  description: Aprašymas
   price: Kaina
   created: Sukurtas
   updated: Atnaujintas
   category: Kategorija
   photo: Nuotrauka
+  photos: Nuotraukos
   measurement: Kaina per
   products: Produktai
   parent: Tėvinė kategorija

@@ -28,6 +28,7 @@ class ProductRepository extends ServiceEntityRepository
 
         if ($filter) $this->applyFilter($qb, $filter);
         if ($paging) $this->applyPaging($qb, $paging);
+        $qb->orderBy('product.created', 'desc');
         return $qb->getQuery()->getResult();
     }
 

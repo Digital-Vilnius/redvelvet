@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -69,14 +70,18 @@ class Product
     private $updated;
 
     /**
-     * @Assert\NotBlank(message="field_is_required")
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="datetime")
      */
     private $created;
 
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
     }
 
     /**

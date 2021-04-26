@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -37,6 +39,7 @@ class ProductPhoto
     private $fileSize;
 
     /**
+     * @Assert\NotBlank(message="field_is_required")
      * @Vich\UploadableField(mapping="products_photos", fileNameProperty="fileName", size="fileSize")
      */
     private $file;
@@ -92,9 +95,13 @@ class ProductPhoto
         return $this->file;
     }
 
-    public function setFile($file)
+    public function setFile(File $file = null): void
     {
         $this->file = $file;
+
+        if ($file) {
+            $this->updated = new DateTime('now');
+        }
     }
 
     public function getFileName()
