@@ -7,9 +7,10 @@ use App\Utils\DateUtils;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use phpDocumentor\Reflection\Types\Iterable_;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class GalleryPhotoController extends AbstractCrudController
@@ -37,31 +38,32 @@ class GalleryPhotoController extends AbstractCrudController
             ->setSearchFields(['id', 'title', 'created', 'updated']);
     }
 
-    public function configureFields(string $pageName): array
+    public function configureFields(string $pageName): Iterable
     {
-        return [
-            IntegerField::new('id', 'labels.id')->hideOnForm(),
+        yield IdField::new('id', 'labels.id')
+            ->hideOnForm();
 
-            ImageField::new('fileName', 'labels.photo')->setBasePath($this->photoPath)->hideOnForm(),
+        yield ImageField::new('fileName', 'labels.photo')
+            ->setBasePath($this->photoPath)
+            ->hideOnForm();
 
-            TextField::new('file', 'labels.photo')
-                ->setFormType(VichImageType::class)
-                ->setFormTypeOption('allow_delete', false)
-                ->onlyOnForms(),
+        yield TextField::new('file', 'labels.photo')
+            ->setFormType(VichImageType::class)
+            ->setFormTypeOption('allow_delete', false)
+            ->onlyOnForms();
 
-            TextField::new('title', 'labels.title'),
+        yield TextField::new('title', 'labels.title');
 
-            DateTimeField::new('updated', 'labels.updated')
-                ->hideOnForm()
-                ->formatValue(function ($value) {
-                    return DateUtils::formatDateTime($value);
-                }),
+        yield DateTimeField::new('updated', 'labels.updated')
+            ->hideOnForm()
+            ->formatValue(function ($value) {
+                return DateUtils::formatDateTime($value);
+            });
 
-            DateTimeField::new('created', 'labels.created')
-                ->hideOnForm()
-                ->formatValue(function ($value) {
-                    return DateUtils::formatDateTime($value);
-                }),
-        ];
+        yield DateTimeField::new('created', 'labels.created')
+            ->hideOnForm()
+            ->formatValue(function ($value) {
+                return DateUtils::formatDateTime($value);
+            });
     }
 }

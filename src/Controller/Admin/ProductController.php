@@ -10,8 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -45,7 +45,7 @@ class ProductController extends AbstractCrudController
     public function configureFields(string $pageName): array
     {
         return [
-            IntegerField::new('id', 'labels.id')->hideOnForm(),
+            IdField::new('id', 'labels.id')->hideOnForm(),
             ImageField::new('photos[0].fileName', 'labels.photo')->setBasePath($this->photoPath)->hideOnForm(),
             TextField::new('title', 'labels.title'),
             TextareaField::new('description', 'labels.description')->onlyOnForms(),
